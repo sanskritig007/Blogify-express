@@ -1,0 +1,110 @@
+body {
+  background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fbc2eb, #a1c4fd);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  min-height: 100vh;
+}
+h1, h2 {
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.card {
+  border-radius: 15px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 6px 20px rgba(0,0,0,0.15);
+}
+
+textarea {
+  resize: none;
+}
+
+.username {
+  color: #0d6efd;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 4px 6px;
+  border-radius: 6px;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+
+.username::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0%;
+  height: 100%;
+  background: #0d6efd;
+  z-index: -1;
+  transition: width 0.3s ease;
+  border-radius: 6px;
+}
+
+.username:hover {
+  color: #fff; 
+}
+
+.username:hover::before {
+  width: 100%; 
+}
+
+.all-posts-section {
+  background: linear-gradient(120deg, #f9fbff, #dce6f9, #f9fbff);
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite;
+  min-height: 100vh;
+  padding: 40px 20px;
+  background-attachment: fixed;
+}
+
+.all-posts-section h2 {
+  margin-left: 30px;   /* ya padding-left bhi de sakti ho */
+  font-weight: bold;
+}
+
+.posts-container {
+  display: flex;
+  flex-direction: column;  /* cards vertical */
+  gap: 20px;               /* cards ke beech space */
+}
+
+.card {
+  width: 100%;             /* pura width lega */
+  max-width: 700px;        /* optional: limit width */
+  margin: 0 auto;          /* center align */
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.all-posts-section,
+.create-post-section {
+  background: linear-gradient(135deg, #f0f4ff, #e6ecff);
+  min-height: 100vh;
+  padding: 40px 0;
+  background-attachment: fixed;
+}
+
+.all-posts-section,
+.create-post-section,
+.edit-post-section {
+  background: linear-gradient(135deg, #f0f4ff, #e6ecff);
+  min-height: 100vh;
+  padding: 40px 0;
+  background-attachment: fixed;
+}

@@ -1,0 +1,56 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Posts</title>
+    <link rel="stylesheet" href="/style.css"/>
+</head>
+<body>
+    <h1>Quora Posts</h1>
+    <% for(post of posts){%>
+        <div class="post">
+           <h3 class="user">@<%= post.username %></h3>
+           <h4 class="content"><%= post.content %></h4> 
+           <br>
+           <a href="http://localhost:8080/posts/<%=post.id%>">See in detail</a> 
+           <a href="http://localhost:8080/posts/<%=post.id%>/edit">Edit</a>
+           <form method="post" action="/posts/<%=post.id%>?_method=DELETE">
+             <button>Delete post</button>
+           </form>
+        </div>
+    <%}%>
+
+    <br/>
+    <br/>
+    <a href="http://localhost:8080/posts/new">Create New Post</a>
+</body>
+</html> -->
+
+
+
+<%- include('partials/header') %>
+
+<div class="container mt-4 all-posts-section">
+    <h2 class="mb-4"> All Posts </h2>
+
+    <div class="posts-container">
+        <% posts.forEach(post => { %>
+            <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                    <h5>
+                        <a href="#" class="username">@<%= post.username %></a>
+                    </h5>
+                    <p class="card-text"><%= post.content.substring(0,100) %>...</p>
+                    <a href="/posts/<%= post.id %>" class="btn btn-primary">Read More</a>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+</div>
+
+
+
+<%- include('partials/footer') %>
+
+
