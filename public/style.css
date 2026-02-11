@@ -64,20 +64,20 @@ textarea {
 }
 
 .all-posts-section h2 {
-  margin-left: 30px;   /* ya padding-left bhi de sakti ho */
+  margin-left: 30px;   
   font-weight: bold;
 }
 
 .posts-container {
   display: flex;
-  flex-direction: column;  /* cards vertical */
-  gap: 20px;               /* cards ke beech space */
+  flex-direction: column;  
+  gap: 20px;               
 }
 
 .card {
-  width: 100%;             /* pura width lega */
-  max-width: 700px;        /* optional: limit width */
-  margin: 0 auto;          /* center align */
+  width: 100%;             
+  max-width: 700px;       
+  margin: 0 auto;          
 }
 
 @keyframes gradientBG {
