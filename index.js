@@ -24,11 +24,6 @@ let posts=[
         username :"shashwat pratap singh",
         content :"Hard work is important to achieve success.."
     },
-    {
-        id:uuidv4(),
-        username :"shraddha khappra",
-        content :"I love coding"
-    },
 ]
 
 app.get("/posts",(req,res)=>{
