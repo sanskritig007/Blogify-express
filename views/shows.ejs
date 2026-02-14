@@ -1,38 +1,24 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Post in Details</title>
-    <link rel="stylesheet" href="/style.css"/>
-</head>
-<body>
-    <h2>Here is your post in detail </h2>
-    <p>Post id:<%= post.id %></p>
-    <div class="post">
-        <h3 class="user">@<%=post.username%></h3>
-        <h4><%=post.content%></h4>
-    </div>
-</body>
-</html> -->
-
 <%- include('partials/header') %>
 
-<div class="container mt-4">
-  <div class="card shadow-sm">
-    <div class="card-body">
-      <p><strong>User:</strong> 
+  <div class="container mt-4">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <p><strong>User:</strong>
           <span class="username">@<%= post.username %></span>
-       </p>
-       <p><b>ID:</b> <%= post.id %></p>
-      <p class="card-text"><%= post.content %></p>
+        </p>
+        <p><b>ID:</b>
+          <%= post.id %>
+        </p>
+        <p class="card-text">
+          <%= post.content %>
+        </p>
 
-      <a href="/posts/<%= post.id %>/edit" class="btn btn-warning">Edit</a>
-      <form method="post" action="/posts/<%= post.id %>?_method=DELETE" style="display:inline;">
-        <button class="btn btn-danger">Delete</button>
-      </form>
+        <a href="/posts/<%= post.id %>/edit" class="btn btn-warning">Edit</a>
+        <form method="post" action="/posts/<%= post.id %>?_method=DELETE" style="display:inline;">
+          <button class="btn btn-danger">Delete</button>
+        </form>
+      </div>
     </div>
   </div>
-</div>
 
-<%- include('partials/footer') %>
+  <%- include('partials/footer') %>
