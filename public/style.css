@@ -7,8 +7,16 @@ body {
 }
 
 h1,
-h2 {
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: 'Segoe UI', sans-serif;
+  font-weight: 700;
+  color: #2c3e50;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
 }
 
 .navbar {
@@ -39,14 +47,35 @@ h2 {
   transition: all 0.3s ease;
 }
 
+/* Custom Gradients for Buttons */
 .btn-primary {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   border: none;
+  color: white !important;
 }
 
-.btn-primary:hover {
+.btn-success {
+  background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+  border: none;
+  color: white !important;
+}
+
+.btn-warning {
+  background: linear-gradient(135deg, #fce38a 0%, #f38181 100%);
+  border: none;
+  color: white !important;
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);
+  border: none;
+  color: white !important;
+}
+
+.btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(118, 75, 162, 0.4);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  color: white !important;
 }
 
 .form-control {
