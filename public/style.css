@@ -58,11 +58,11 @@ h6 {
   color: white !important;
 }
 
-.btn-danger {
+/* .btn-danger {
   background: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);
   border: none;
   color: white !important;
-}
+} */
 
 .btn:hover {
   transform: translateY(-2px);
