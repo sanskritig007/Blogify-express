@@ -47,13 +47,6 @@ h6 {
   transition: all 0.3s ease;
 }
 
-/* Custom Gradients for Buttons */
-.btn-primary {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border: none;
-  color: white !important;
-}
-
 .btn-success {
   background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
   border: none;
