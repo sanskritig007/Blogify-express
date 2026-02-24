@@ -109,10 +109,6 @@ h6 {
   border-radius: 6px;
 }
 
-.username:hover {
-  color: #fff;
-}
-
 .username:hover::before {
   width: 100%;
 }
