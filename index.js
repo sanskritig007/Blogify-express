@@ -24,9 +24,15 @@ let posts = [
         username: "shashwat pratap singh",
         content: "Hard work is important to achieve success.."
     },
+    {
+        id: uuidv4(),
+        username: "test_user",
+        content: "This is a minimal change for testing purposes."
+    },
 ]
 
 app.get("/posts", (req, res) => {
+    console.log("GET /posts request received");
     res.render("index.ejs", { posts });
 })
 
