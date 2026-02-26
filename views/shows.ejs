@@ -1,38 +1,74 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Post in Details</title>
-    <link rel="stylesheet" href="/style.css"/>
-</head>
-<body>
-    <h2>Here is your post in detail </h2>
-    <p>Post id:<%= post.id %></p>
-    <div class="post">
-        <h3 class="user">@<%=post.username%></h3>
-        <h4><%=post.content%></h4>
-    </div>
-</body>
-</html> -->
-
 <%- include('partials/header') %>
 
-<div class="container mt-4">
-  <div class="card shadow-sm">
-    <div class="card-body">
-      <p><strong>User:</strong> 
-          <span class="username">@<%= post.username %></span>
-       </p>
-       <p><b>ID:</b> <%= post.id %></p>
-      <p class="card-text"><%= post.content %></p>
+  <div class="row justify-content-center">
+    <div class="col-md-9 col-lg-8">
+      <div class="mb-4">
+        <a href="/posts" class="btn btn-outline-secondary btn-sm">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left"
+            viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+              d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
+          </svg>
+          Back to Feed
+        </a>
+      </div>
 
-      <a href="/posts/<%= post.id %>/edit" class="btn btn-warning">Edit</a>
-      <form method="post" action="/posts/<%= post.id %>?_method=DELETE" style="display:inline;">
-        <button class="btn btn-danger">Delete</button>
-      </form>
+      <div class="card shadow-lg p-2">
+        <div class="card-body p-5">
+          <div class="d-flex align-items-center mb-4">
+            <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center"
+              style="width: 48px; height: 48px; font-weight: 700; font-size: 1.25rem;">
+              <%= post.username.charAt(0).toUpperCase() %>
+            </div>
+            <div class="ms-3">
+              <h5 class="mb-0"><a href="#" class="username">@<%= post.username %></a></h5>
+              <span class="text-muted small">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor"
+                  class="bi bi-clock me-1" viewBox="0 0 16 16">
+                  <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z" />
+                  <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z" />
+                </svg>
+                <%= new Date(post.createdAt).toLocaleDateString('en-US', { month: 'long' , day: 'numeric' ,
+                  year: 'numeric' }) %>
+              </span>
+            </div>
+          </div>
+
+          <div class="post-content mb-5" style="font-size: 1.125rem; white-space: pre-wrap;">
+            <%= post.content %>
+          </div>
+
+          <hr class="mb-4 opacity-10">
+
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="text-muted small">
+              ID: <code class="bg-light px-2 rounded"><%= post.id %></code>
+            </div>
+            <div class="d-flex gap-2">
+              <a href="/posts/<%= post.id %>/edit" class="btn btn-outline-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil"
+                  viewBox="0 0 16 16">
+                  <path
+                    d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.707-6.707zM13.5 6.707 12.793 7.5 8.5 3.207 9.207 2.5 13.5 6.707zM7.11 6.707l-2.73 2.73a.5.5 0 0 0-.146.252l-.5 2a.5.5 0 0 0 .606.606l2-.5a.5.5 0 0 0 .252-.146l2.73-2.73-2.212-2.212z" />
+                </svg>
+                Edit
+              </a>
+              <form method="post" action="/posts/<%= post.id %>?_method=DELETE" style="display:inline;"
+                onsubmit="return confirm('Are you sure you want to delete this story?');">
+                <button class="btn btn-danger">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-trash3" viewBox="0 0 16 16">
+                    <path
+                      d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm3.054 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z" />
+                  </svg>
+                  Delete
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
 
-<%- include('partials/footer') %>
+  <%- include('partials/footer') %>

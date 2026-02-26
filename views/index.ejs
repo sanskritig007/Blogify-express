@@ -1,56 +1,49 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Posts</title>
-    <link rel="stylesheet" href="/style.css"/>
-</head>
-<body>
-    <h1>Quora Posts</h1>
-    <% for(post of posts){%>
-        <div class="post">
-           <h3 class="user">@<%= post.username %></h3>
-           <h4 class="content"><%= post.content %></h4> 
-           <br>
-           <a href="http://localhost:8080/posts/<%=post.id%>">See in detail</a> 
-           <a href="http://localhost:8080/posts/<%=post.id%>/edit">Edit</a>
-           <form method="post" action="/posts/<%=post.id%>?_method=DELETE">
-             <button>Delete post</button>
-           </form>
-        </div>
-    <%}%>
-
-    <br/>
-    <br/>
-    <a href="http://localhost:8080/posts/new">Create New Post</a>
-</body>
-</html> -->
-
-
-
 <%- include('partials/header') %>
 
-<div class="container mt-4 all-posts-section">
-    <h2 class="mb-4"> All Posts </h2>
-
-    <div class="posts-container">
-        <% posts.forEach(post => { %>
-            <div class="card shadow-sm mb-4">
-                <div class="card-body">
-                    <h5>
-                        <a href="#" class="username">@<%= post.username %></a>
-                    </h5>
-                    <p class="card-text"><%= post.content.substring(0,100) %>...</p>
-                    <a href="/posts/<%= post.id %>" class="btn btn-primary">Read More</a>
-                </div>
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-7">
+            <div class="d-flex justify-content-between align-items-center mb-5">
+                <h2 class="h3 mb-0">Discover Stories</h2>
+                <span class="badge bg-primary rounded-pill">
+                    <%= posts.length %> Posts
+                </span>
             </div>
-        <% }) %>
+
+            <div class="posts-container">
+                <% posts.slice().reverse().forEach(post=> { %>
+                    <div class="card mb-4 post-card">
+                        <div class="card-body p-4">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <div>
+                                    <a href="#" class="username">@<%= post.username %></a>
+                                </div>
+                                <span class="timestamp">
+                                    <%= new Date(post.createdAt).toLocaleDateString('en-US', { month: 'short' ,
+                                        day: 'numeric' }) %>
+                                </span>
+                            </div>
+                            <h5 class="card-title text-dark">
+                                <%= post.content.length> 60 ? post.content.substring(0, 60) + '...' : post.content %>
+                            </h5>
+                            <p class="card-text text-muted mb-4">
+                                <%= post.content.substring(0, 150) %>
+                                    <%= post.content.length> 150 ? '...' : '' %>
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="/posts/<%= post.id %>" class="btn btn-outline-primary">
+                                    Read Full Story
+                                </a>
+                                <div class="text-muted small">
+                                    <i class="bi bi-chat-left"></i> 0 comments
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <% }) %>
+            </div>
+        </div>
     </div>
-</div>
 
 
 
-<%- include('partials/footer') %>
-
-
+    <%- include('partials/footer') %>
