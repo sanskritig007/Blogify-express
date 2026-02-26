@@ -17,17 +17,20 @@ let posts = [
     {
         id: uuidv4(),
         username: "sanskriti goswami",
-        content: "I got my first internship!"
+        content: "I got my first internship!",
+        createdAt: new Date().toISOString()
     },
     {
         id: uuidv4(),
         username: "shashwat pratap singh",
-        content: "Hard work is important to achieve success.."
+        content: "Hard work is important to achieve success..",
+        createdAt: new Date().toISOString()
     },
     {
         id: uuidv4(),
         username: "test_user",
-        content: "This is a minimal change for testing purposes."
+        content: "This is a minimal change for testing purposes.",
+        createdAt: new Date().toISOString()
     },
 ]
 
@@ -43,7 +46,8 @@ app.get("/posts/new", (req, res) => {
 app.post("/posts", (req, res) => {
     let { username, content } = req.body;
     let id = uuidv4();
-    posts.push({ id, username, content });
+    let createdAt = new Date().toISOString();
+    posts.push({ id, username, content, createdAt });
     res.redirect("/posts");
 });
 
